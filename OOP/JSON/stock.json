@@ -1,0 +1,24 @@
+[
+    { 
+        "name": "Reliance",
+        "NumberOfShare,": 40,
+        "sharePrice": 400
+        
+    }
+    ,
+    
+    {
+    
+        "name": "Tata",
+        "NumberOfShare,": 100,
+        "sharePrice": 400
+    }
+    ,
+    
+    {
+    
+        "name": "Capgemini",
+        "NumberOfShare,": 20,
+        "sharePrice": 4000
+    }
+    ]
