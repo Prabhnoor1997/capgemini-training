@@ -29,4 +29,7 @@ router.post('/register', [
 
 router.post('/login',userController.loginController)
 
+
+router.post('/forget',userController.forgetPasswordController)
+
 module.exports = router;

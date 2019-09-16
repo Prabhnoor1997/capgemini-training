@@ -11,8 +11,10 @@ exports.registerService = (body, callback) => {
             callback(null, result);
         }
     })
- exports.loginService = (body , callback) => {
-
+ 
+}
+exports.loginService = (body , callback) => {
+    console.log("in login service");
     userModel.login(body, (err,result) => {
         if(err)
             callback(err);
@@ -21,4 +23,12 @@ exports.registerService = (body, callback) => {
     })
  }
 
-}
+ exports.forgetService = (body , callback) => {
+    console.log("in forget service");
+    userModel.forget(body, (err,result) => {
+        if(err)
+            callback(err);
+            else
+            callback(null,result);
+    })
+ }
