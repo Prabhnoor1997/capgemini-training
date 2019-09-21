@@ -4,6 +4,8 @@ const route = require('./app/routes/user.route');
 
 // create express app
 const app = express();
+const server= require('http').createServer(app);
+const io=require('socket.io').listen(server);
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -13,6 +15,7 @@ app.use("/", route)
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
+app.use(express.static("./UI"));
 //mongoose.connect(uri, { useNewUrlParser: true });
 // mongoose.createConnection(uri, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- CSS (load bootstrap) -->
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+     -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <style>
+        .navbar {
+            border-radius: 0;
+        }
+    </style>
+
+    <!-- JS (load angular, ui-router, and our custom js file) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
+    <script src="./app.js"></script>
+    <script src="./controllers/login-controller.js"></script>
+    <script src="./controllers/register-controller.js"></script>
+    <script src="./controllers/forget-controller.js"></script>
+    <script src="./controllers/reset-controller.js"></script>
+    <script src="./services/userServices.js"></script>
+</head>
+
+<!-- apply our angular app to our site -->
+
+<body ng-app="routerApp">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="#">chatApp</a>
+        </div>
+      
+    </nav>
+
+   
+    
+    <div ui-view></div>
+    
+    <div class="text-center">
+    <p>Welcome to Chatapp . You can chat with your friends . Login first</p>
+    
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+   
+
+</body>
+
+</html>

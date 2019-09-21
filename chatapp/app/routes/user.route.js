@@ -1,6 +1,7 @@
 const express = require('express');
 var router = express.Router();
 const userController = require('../../controllers/userController');
+const util=require('../utility')
 
 const {check, validationResult} = require('express-validator/check');
 // Create a new Note
@@ -15,7 +16,6 @@ router.post('/register', [
     //
 ],  function (req, res) {
     const errors = validationResult(req);
-    // console.log(req.body);
 
     if (!errors.isEmpty()) {
         return res.status(422).jsonp(errors.array());
@@ -32,4 +32,7 @@ router.post('/login',userController.loginController)
 
 router.post('/forget',userController.forgetPasswordController)
 
+router.post('/reset',util.authUser,userController.resetPasswordController)
+router.get('/getUser',userController.getUsersController);
 module.exports = router;
+

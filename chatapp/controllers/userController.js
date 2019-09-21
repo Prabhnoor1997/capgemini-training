@@ -1,7 +1,7 @@
 const userService = require('../services/userServices');
 //const { check, validationResult } = require('express-validator');
 exports.loginController = (req , res ) => {
-    console.log("in login controller")
+    //console.log("in login controller 4------------" +  req.body )
     let responseResult={};
     userService.loginService(req.body , (err , result ) => {
         if(err){
@@ -52,4 +52,35 @@ exports.forgetPasswordController = (req, res) => {
     })
 }
 
+exports.resetPasswordController = (req , res )  => {
+    let responseResult={};
+    userService.resetPassword(req, (err , result )=>{
+        if(err){
+            responseResult.success=false;
+            responseResult.errors=err;
+            return res.status(400).send(responseResult);
+        }
+        else{
+            responseResult.success = true;
+            responseResult.result = result;
+            return res.status(200).send(responseResult);
+        }
+    })
+}
 
+
+exports.getUsersController = (req , res )  => {
+    let responseResult={};
+    userService.getUsers(req, (err , result )=>{
+        if(err){
+            responseResult.success=false;
+            responseResult.errors=err;
+            return res.status(400).send(responseResult);
+        }
+        else{
+            responseResult.success = true;
+            responseResult.result = result;
+            return res.status(200).send(responseResult);
+        }
+    })
+}
