@@ -1,16 +1,32 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const route = require('./app/routes/user.route');
-
 // create express app
 const app = express();
-const server= require('http').createServer(app);
-const io=require('socket.io').listen(server);
+// const server = require('http').createServer(app);
+// const io = require('socket.io')(server);
+const port = 3010;
+
+
+
+
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use("/", route)
+var http = require('http').Server(app);
+var io=require('socket.io')(http);
+io.on("connection", (socket) => {
+    console.log("user connected");
+    socket.emit('testForevent',{message:"Hey its emitted from socket server"});
+    socket.on('disconnect',function(){
+        console.log("A user disconnected")
+    })
+});
+http.listen(port, function(){
+    console.log('server is listening on port 30101');
+})
 //app.use("/",)
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
@@ -40,7 +56,5 @@ app.get('/', (req, res) => {
 });
 
 // listen for requests
-app.listen(3010, () => {
-    console.log("Server is listening on port 3010");
-});
+
 

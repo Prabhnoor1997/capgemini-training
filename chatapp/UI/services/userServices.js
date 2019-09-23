@@ -71,5 +71,24 @@ angular.module('routerApp').service('services',['$http','$state', function ($htt
                 console.log("data after error api call", error);
             })
     }
+
+    this.getUser = function (callback) {
+        console.log("Inside getUser service");
+        $http(  
+            {  
+                method: 'GET',  
+                url: 'http://localhost:3010/getUser'  
+            }).then(function successCallback(response)  
+            {   
+                //console.log(response.data.result);
+                callback(null,response.data.result);
+            }, function errorCallback(response)  
+            {  
+                response.success=false;
+                reponse.message="failed to get service getUsers";
+                callback(response);  
+            })  
+            
+    }
 }])
 ;

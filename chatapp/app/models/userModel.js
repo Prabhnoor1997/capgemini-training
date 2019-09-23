@@ -165,15 +165,15 @@ class userModel {
 getUsers(req, callback) {
   console.log("in get user model")
   
-  User.find({}, function(err, users) {
-    var userMap = {};
+  User.find({},{firstName : 1,email : 1}, function(err, users) {
+    //var userMap = {};
     if(err)
     callback(err);
 
-    users.forEach(function(user) {
-      userMap[user._id] = user;
-    });
-
+    // users.forEach(function(user) {
+    //   userMap[user._id] = user;
+    // });
+    else 
     callback(null,users);  
   });
 }

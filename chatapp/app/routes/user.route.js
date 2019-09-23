@@ -34,5 +34,7 @@ router.post('/forget',userController.forgetPasswordController)
 
 router.post('/reset',util.authUser,userController.resetPasswordController)
 router.get('/getUser',userController.getUsersController);
+//app.get('/messages', )
+  //app.post('/messages', )
 module.exports = router;
 
